@@ -1,0 +1,11 @@
+form {
+  min-height: 400px;
+}
+
+.section::after {
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(22,41,67,80) 100%);
+}
+
+.section {
+  justify-content: center;
+}
