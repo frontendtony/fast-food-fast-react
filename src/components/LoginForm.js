@@ -1,16 +1,18 @@
 import React from 'react';
-import '../styles/login.css';
+import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   return (
-    <div className="section">
-      <form className='raised default-form'>
+    <div className="auth section">
+      <form className='raised login form default-form'>
         <h2 className="form-title">Login</h2>
-        <input type="text" name="username" placeholder="Username" required autoComplete="off" />
-        <input type="password" name="password" placeholder="Password" required />
+        <input className="input" type="email" name="email" placeholder="Email" required autoComplete="off" />
+        <input className="input" type="password" name="password" placeholder="Password" required />
         <input type="submit" value="Login" />
       </form>
-      <p className="emphasis"><a href="register.html">Or create a new account</a></p>
+      <p>
+        <Link to="/signup">Create a new account</Link>
+      </p>
     </div>
   );
 }

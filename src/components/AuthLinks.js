@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const AuthLinks = (props) => {
   const links = [
     { text: 'Login', url: '/login', },
-    { text: 'Sign Up', url: '/register', },
+    { text: 'Sign Up', url: '/signup', },
   ]
 
   return (
