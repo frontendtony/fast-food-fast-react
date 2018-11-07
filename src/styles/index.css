@@ -247,6 +247,25 @@ form {
   border-radius: 0 5px 5px 0;
 }
 
+.search-form>input {
+  border-left: 1px;
+  border-right: 0;
+  border-top: 1px;
+  border-bottom: 1px;
+  border-color: gray;
+  border-style: solid;
+}
+
+.search-form>i {
+  border-left: 0;
+  border-top: 1px;
+  border-right: 1px;
+  border-bottom: 1px;
+  border-color: gray;
+  border-style: solid;
+  box-sizing: border-box
+}
+
 .input {
   font-size: initial;
 }
