@@ -159,13 +159,21 @@ a {
 .landing.section {
   color: #fff;
   position: relative;
-  text-align: center;
-  min-height: 53vh !important;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 5%;
+  color: rgb(22, 41, 67);
+  opacity: 1;
 }
 
-.section>h1 {
-  margin-bottom: 10px;
+.title {
+  font-size: 2em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.subtitle {
+  color: rgba(22, 41, 67, 0.7);
 }
 
 .bottom-page {
@@ -173,17 +181,10 @@ a {
   bottom: 50px;
 }
 
-.landing.section>p:first-of-type {
-  margin-top: 0;
-  font-weight: normal;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
-  font-style: italic;
-}
-
 .main-section::after {
-  background: url('https://images.unsplash.com/photo-1511516315833-9c19f0e41bf4?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=768b66c6b7354ddf24768ac457cfdc8e&auto=format&fit=crop&w=1051&q=80');
-  
+  background:
+    url('https://s23527.pcdn.co/wp-content/uploads/2014/04/white-2.jpg.optimal.jpg')
+    center center no-repeat;
 }
 
 .section::after {
@@ -225,6 +226,7 @@ form {
   background: none;
   flex-direction: row;
   box-shadow: none;
+  min-width: 200px;
   width: 800px;
   margin-top: 30px;
   justify-content: center;
@@ -475,6 +477,7 @@ input:focus {
   transition-duration: .5s;
   font-family: 'Exo 2', sans-serif;
   font-weight: 700;
+  margin-right: 10px;
 }
 
 .inverted.confirm.button {
@@ -549,6 +552,10 @@ input:focus {
 .moved-down {
   transition: transform 0.3s linear;
   transform: translateY(15px);
+}
+
+.transparent {
+  background: transparent !important;
 }
 
 .loader {

@@ -6,6 +6,7 @@ import configureStore from '../store';
 import '../styles/index.css';
 
 import Header from './Header';
+import Landing from '../components/Landing';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import Menu from '../components/Menu';
@@ -27,6 +28,7 @@ const App = () => {
             <Route 
               exact path="/menu" 
               render={() => <Menu addCommaToNum={addCommaToNum}/>} />
+            <Route exact path="/" render={() => <Landing />} />
           </Switch>
         </div>
       </Router>
