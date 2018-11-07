@@ -2,13 +2,14 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetchMenu from '../store/actions/fetchMenu';
+import addToCart from '../store/actions/addToCart';
 
 class MenuList extends Component {
   componentDidMount() {
-    this.props.fetchMenu({ limit: 20 });
+    this.props.fetchMenu({ limit: 10 });
   }
   
-  addCart(food) {
+  addToCart(food) {
     this.props.addToCart(food);
   }
   
@@ -29,7 +30,7 @@ class MenuList extends Component {
             <div className="order-buttons">
               <button 
                 className="big fluid confirm button"
-                onClick={this.addCart.bind(this, food)}>
+                onClick={this.addToCart.bind(this, food)}>
                 Add to cart
               </button>
             </div>
@@ -52,4 +53,4 @@ const mapStateToProps = (state) => {
   return { menu: state.menu };
 };
 
-export default connect(mapStateToProps, { fetchMenu })(MenuList);
+export default connect(mapStateToProps, { fetchMenu, addToCart })(MenuList);

@@ -396,6 +396,7 @@ input:focus {
   max-height: 150px;
   width: 500px;
   align-items: flex-end;
+  margin-bottom: 10px;
 }
 
 .card-details {
@@ -428,6 +429,10 @@ input:focus {
   font-size: 14px;
   font-family: 'Exo 2', sans-serif;
   font-weight: normal;
+}
+
+.total.amount {
+  margin-bottom: 0;
 }
 
 .customer-name {
@@ -467,6 +472,25 @@ input:focus {
   transform: scale(1.2)
 }
 
+.address.input {
+  width: 100%;
+  margin: 10px 0 30px;
+  border-radius: 5px;
+  font-size: initial;
+  border: 0.5px solid rgba(0,0,0,0.2);
+}
+
+.cart-footer {
+  width: 100%;
+}
+
+.cart-checkout-group {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
 .button {
   border: none;
   height: 30px;
@@ -477,6 +501,9 @@ input:focus {
   transition-duration: .5s;
   font-family: 'Exo 2', sans-serif;
   font-weight: 700;
+}
+
+.button-group :not(:last-child) {
   margin-right: 10px;
 }
 

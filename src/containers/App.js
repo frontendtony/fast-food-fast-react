@@ -10,6 +10,7 @@ import Landing from '../components/Landing';
 import LoginForm from '../components/LoginForm';
 import SignupForm from '../components/SignupForm';
 import Menu from '../components/Menu';
+import Cart from './Cart';
 
 const store = configureStore();
 const addCommaToNum = (number) => {
@@ -27,7 +28,12 @@ const App = () => {
             <Route exact path="/signup" render={() => <SignupForm />} />
             <Route 
               exact path="/menu" 
-              render={() => <Menu addCommaToNum={addCommaToNum}/>} />
+              render={() => <Menu addCommaToNum={addCommaToNum}/>}
+            />
+            <Route 
+              exact path="/cart" 
+              render={() => <Cart addCommaToNum={addCommaToNum}/>}
+            />
             <Route exact path="/" render={() => <Landing />} />
           </Switch>
         </div>

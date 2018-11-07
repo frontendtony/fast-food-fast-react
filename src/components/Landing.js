@@ -6,7 +6,7 @@ const Landing = () => {
     <div className='main-section section landing'>
       <h1 className="title">Order intercontinental dishes online!</h1>
       <p className="subtitle">One hour delivery to any location in Lagos</p>
-      <div className="horizontal">
+      <div className="horizontal button-group">
         <button className="large inverted transparent confirm button">
           <Link to="/login">Login</Link>
         </button>
