@@ -1,10 +1,18 @@
 import apiCall from '../../services/api';
 import { FETCH_MENU, ERROR } from '../actionTypes';
 
-const fetchMenu = ({search = '', limit = 10, offset = 0} = {}) => {
-  const url = 'https://fast-food-fast-adc.herokuapp.com/api/v1/menu';
-  const params = `?search=${search}&limit=${limit}&offset=${offset}`
-  const request = apiCall('get', `${url}${params}`);
+const fetchMenu = ({search = '', limit = 10, offset = 0} = {}) => {  
+  const config = {
+    method: 'get',
+    url: 'https://fast-food-fast-adc.herokuapp.com/api/v1/menu',
+    params: {
+      search,
+      limit,
+      offset
+    }
+  }
+
+  const request = apiCall(config);
 
   return (dispatch) => {
     request.then((data) => {
@@ -13,7 +21,7 @@ const fetchMenu = ({search = '', limit = 10, offset = 0} = {}) => {
         payload: data,
       })
     })
-    .catch((err) => {
+    .catch(() => {
       dispatch({
         type: ERROR,
         payload: {

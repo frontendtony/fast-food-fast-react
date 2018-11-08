@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const apiCall = (method, path, payload) => {
+const apiCall = (axiosConfigObj) => {
   return new Promise((resolve, reject) => {
-    return axios[method](path, payload)
+    return axios(axiosConfigObj)
       .then((res) => { 
         return resolve(res.data);
       })
