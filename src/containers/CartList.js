@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import removeFromCart from '../store/actions/removeFromCart';
+import { removeFromCart } from '../store/actions/cart';
 import _ from 'lodash';
 
 class CartList extends Component {

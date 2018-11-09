@@ -2,24 +2,32 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AuthLinks = (props) => {
-  const links = [
-    { text: 'Login', url: '/login', },
-    { text: 'Sign Up', url: '/signup', },
-  ]
+  const { currentUser: { isLoggedIn }, logout, closeMenu } = props;
+  const handleLogout = (e) => {
+    e.preventDefault();
+    closeMenu();
+    logout();
+  }
 
   return (
     <ul className='nav-links auth-links'>
-      { 
-        links.map((link) => {
-          return (
-            <li key={link.url} onClick={props.closeMenu}>
-              <Link to={link.url}>{link.text}</Link>
+      {
+        isLoggedIn
+        ? <li onClick={handleLogout}>
+            <Link to='/'>Logout</Link>
+          </li>
+        : [
+            <li key='login' onClick={closeMenu}>
+              <Link to='/login'>Login</Link>
+            </li>,
+            <li key='signup' onClick={closeMenu}>
+              <Link to='/signup'>Sign Up</Link>
             </li>
-          );
-        }) 
+          ]
       }
     </ul>
   );
+  
 }
 
 export default AuthLinks;

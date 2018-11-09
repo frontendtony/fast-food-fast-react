@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import fetchMenu from '../store/actions/fetchMenu';
-import addToCart from '../store/actions/addToCart';
+import { addToCart } from '../store/actions/cart';
 
 class MenuList extends Component {
   componentDidMount() {

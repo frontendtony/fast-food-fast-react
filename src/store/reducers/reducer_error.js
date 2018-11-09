@@ -1,8 +1,10 @@
-import { ERROR } from '../actionTypes';
+import { ADD_ERROR, REMOVE_ERROR } from '../actionTypes';
 
-const errorHandler = (state = { message: '' }, action) => {
+const errorHandler = (state = '', action) => {
   switch (action.type) {
-    case ERROR:
+    case ADD_ERROR:
+      return action.payload;
+    case REMOVE_ERROR:
       return action.payload;
     default:
       return state;

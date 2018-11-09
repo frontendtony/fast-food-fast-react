@@ -1,45 +1,62 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import configureStore from '../store';
+import { authUser, logout } from '../store/actions/auth';
+import { removeError } from '../store/actions/errors';
 
 import '../styles/index.css';
 
 import Header from './Header';
 import Landing from '../components/Landing';
-import LoginForm from '../components/LoginForm';
-import SignupForm from '../components/SignupForm';
+import LoginForm from './LoginForm';
+import SignupForm from './SignupForm';
 import Menu from '../components/Menu';
 import Cart from './Cart';
 
-const store = configureStore();
-const addCommaToNum = (number) => {
-  return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-};
-
-const App = () => {
+const App = (props) => {
+  const addCommaToNum = (number) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
+  const { authUser, error, currentUser, removeError, logout } = props;
   return (
-    <Provider store={store}>
-      <Router>
-        <div className="container">
-          <Header />
-          <Switch>
-            <Route exact path="/login" render={() => <LoginForm />} />
-            <Route exact path="/signup" render={() => <SignupForm />} />
-            <Route 
-              exact path="/menu" 
-              render={() => <Menu addCommaToNum={addCommaToNum}/>}
-            />
-            <Route 
-              exact path="/cart" 
-              render={() => <Cart addCommaToNum={addCommaToNum}/>}
-            />
-            <Route exact path="/" render={() => <Landing />} />
-          </Switch>
-        </div>
-      </Router>
-    </Provider>
+    <Router>
+      <div className="container">
+        <Header currentUser={currentUser} logout={logout} />
+        <Switch>
+          <Route exact path="/login" render={() => 
+            <LoginForm
+              onAuth={authUser} 
+              error={error}
+              removeError={removeError}
+              currentUser={currentUser}
+            />}
+          />
+          <Route exact path="/signup" render={() => 
+            <SignupForm 
+              onAuth={authUser} 
+              error={error} 
+              removeError={removeError}
+              currentUser={currentUser}
+            />}
+          />
+          <Route exact path="/menu"
+            render={() => <Menu addCommaToNum={addCommaToNum}/>}
+          />
+          <Route exact path="/cart"
+            render={() => <Cart addCommaToNum={addCommaToNum}/>}
+          />
+          <Route exact path="/" render={() => <Landing currentUser={currentUser} />} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    error: state.error,
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps, { authUser, removeError, logout })(App);

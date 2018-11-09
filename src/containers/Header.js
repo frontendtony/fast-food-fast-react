@@ -39,6 +39,7 @@ class Header extends Component {
   }
 
   render() {
+    const { currentUser, logout } = this.props;
     return(
       <nav id="navbar">
         <i className="fa fa-bars fa-2x nav-toggle"
@@ -51,8 +52,12 @@ class Header extends Component {
             <i className="fas fa-shipping-fast" id="logo"></i>
           </h3>
           <div className={`nav-links-wrapper ${this.state.openMenuClass}`}>
-            <NavLinks closeMenu={this.closeMenu} />
-            <AuthLinks closeMenu={this.closeMenu} />
+            <NavLinks closeMenu={this.closeMenu} currentUser={currentUser} />
+            <AuthLinks 
+              closeMenu={this.closeMenu}
+              currentUser={currentUser}
+              logout={logout}
+            />
             <div className={`menu-page-cover ${this.state.menuCoverClass}`} 
               onClick={this.toggleMenu}>
             </div>

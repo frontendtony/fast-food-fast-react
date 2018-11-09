@@ -1,15 +1,12 @@
-import apiCall from '../../services/api';
-import { FETCH_MENU, ERROR } from '../actionTypes';
+import { apiCall } from '../../services/api';
+import { FETCH_MENU } from '../actionTypes';
+import { removeError, addError } from './errors';
 
 const fetchMenu = ({search = '', limit = 10, offset = 0} = {}) => {  
   const config = {
     method: 'get',
-    url: 'https://fast-food-fast-adc.herokuapp.com/api/v1/menu',
-    params: {
-      search,
-      limit,
-      offset
-    }
+    url: '/menu',
+    params: { search, limit, offset }
   }
 
   const request = apiCall(config);
@@ -20,14 +17,10 @@ const fetchMenu = ({search = '', limit = 10, offset = 0} = {}) => {
         type: FETCH_MENU,
         payload: data,
       })
+      dispatch(removeError());
     })
     .catch(() => {
-      dispatch({
-        type: ERROR,
-        payload: {
-          message: 'Could not retrieve menu, please try again'
-        }
-      })
+      dispatch(addError('Could not retrieve menu, please try again'));
     })
   };
 }

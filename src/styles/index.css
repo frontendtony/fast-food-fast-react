@@ -87,6 +87,7 @@ ul {
 .nav-links>li {
   display: flex;
   padding: 0 20px;
+  cursor: pointer;
   list-style-type: none;
   transition-property: transform;
   transition-duration: .5s;
@@ -218,6 +219,11 @@ form {
   height: 500px;
 }
 
+.form-error {
+  color: red;
+  font-weight: 200;
+}
+
 .emphasis {
   font-style: italic;
 }
@@ -310,8 +316,7 @@ input:focus {
 }
 
 .dim {
-  background-color: rgba(0, 0, 0, 0.5);
-  width: calc(100vw - 250px);
+  display: none;
 }
 
 /* Shared rules */
@@ -662,15 +667,27 @@ input:focus {
   
   .auth-links {
     flex-direction: row;
-    justify-content: space-evenly;
     margin-top: 30px;
+    padding-left: 30px;
+  }
+
+  .auth-links > li:first-child {
+    margin-right: 10px;
   }
   
   .auth-links > li {
     background-color: powderblue;
     border-radius: 5px;
-    padding: 0 20px;
+    padding: 0;
+    width: 95px;
     color: rgb(22, 41, 67);
+    text-align: center;
+  }
+
+  .dim {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: calc(100vw - 250px);
   }
   
   .nav-toggle {
