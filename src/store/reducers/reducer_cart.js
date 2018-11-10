@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../actionTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART, EMPTY_CART } from '../actionTypes';
 import _ from 'lodash';
 
 const defaultCart = JSON.parse(localStorage.getItem('cart')) || {};
@@ -16,6 +16,10 @@ const cart = (state = defaultCart, action) => {
       return newState;
     case REMOVE_FROM_CART:
       newState = _.omit(state, action.payload);
+      saveCartToStorage(newState);
+      return newState;
+    case EMPTY_CART:
+      newState = {};
       saveCartToStorage(newState);
       return newState;
     default:

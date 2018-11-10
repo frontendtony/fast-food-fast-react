@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from '../actionTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART, EMPTY_CART } from '../actionTypes';
 
 export const addToCart = (foodObject) => {
   return (dispatch) => {
@@ -14,6 +14,14 @@ export const removeFromCart = (id) => {
     dispatch({
       type: REMOVE_FROM_CART,
       payload: id
+    })
+  }
+}
+
+export const emptyCart = () => {
+  return dispatch => {
+    dispatch({
+      type: EMPTY_CART
     })
   }
 }
