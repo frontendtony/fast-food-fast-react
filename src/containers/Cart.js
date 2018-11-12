@@ -3,11 +3,11 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import CartList from '../components/CartList';
 import CartFooter from '../components/CartFooter';
-import { removeFromCart, emptyCart } from '../store/actions/cart';
+import { removeFromCart, emptyCart, checkout } from '../store/actions/cart';
 
 class Cart extends Component {
   render() {
-    const { cart, removeFromCart, emptyCart, addCommaToNum } = this.props;
+    const { cart, removeFromCart, emptyCart, addCommaToNum, checkout } = this.props;
     const total = _.reduce(cart, (acc, curr) => acc + curr.cost, 0);
     const count = _.keys(cart).length;
     
@@ -21,10 +21,12 @@ class Cart extends Component {
         
         { !!count
           ?
-            <CartFooter 
+            <CartFooter
+              cart={cart}
               total={total}
               addCommaToNum={addCommaToNum}
               emptyCart={emptyCart}
+              checkout={checkout}
             />
           : <p>You currently do not have any items in your cart</p>
         }
@@ -37,4 +39,4 @@ const mapStateToProps = (state) => {
   return { cart: state.cart };
 };
 
-export default connect(mapStateToProps, { removeFromCart, emptyCart })(Cart);
+export default connect(mapStateToProps, { removeFromCart, emptyCart, checkout })(Cart);
