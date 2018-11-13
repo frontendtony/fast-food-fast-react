@@ -4,5 +4,6 @@ export const REMOVE_FROM_CART = 'remove_from_cart';
 export const EMPTY_CART = 'empty_cart';
 export const SET_CURENT_USER = 'set_current_user';
 export const REMOVE_USER = 'remove_user';
+export const FETCH_USER_ORDERS = 'fetch_user_orders';
 export const ADD_ERROR = 'add_error';
 export const REMOVE_ERROR = 'remove_error';

@@ -13,7 +13,7 @@ const NavLinks = (props) => {
       links = [ { text: 'Admin', url: '/admin', }, ]
     } else {
       links.push(
-        { text: 'My Orders', url: '/order-history', },
+        { text: 'My Orders', url: '/orders', },
         { text: 'Cart', url: '/cart', }
       )
     }

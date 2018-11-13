@@ -12,10 +12,10 @@ const fetchMenu = ({search = '', limit = 10, offset = 0} = {}) => {
   const request = apiCall(config);
 
   return (dispatch) => {
-    request.then((data) => {
+    request.then(({ result }) => {
       dispatch({
         type: FETCH_MENU,
-        payload: data,
+        payload: result,
       })
       dispatch(removeError());
     })

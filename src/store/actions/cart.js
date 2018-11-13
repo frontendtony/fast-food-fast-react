@@ -49,10 +49,7 @@ export const checkout = (cart, address = '') => {
         resolve();
       })
       .catch((err) => {
-        const { response, request, message } = err;
-        const error = response ? response.data.message
-          : request ? 'Network error, please try again later' : message;
-        dispatch(addError(error));
+        dispatch(addError(err));
       })
     })
   }

@@ -19,7 +19,10 @@ export const apiCall = (axiosConfigObj) => {
         return resolve(res.data);
       })
       .catch((err) => {
-        return reject(err);
+        const { response, request, message } = err;
+        const error = response ? response.data.message
+          : request ? 'Network error, please try again later' : message;
+        return reject(error);
       })
   })
 }
