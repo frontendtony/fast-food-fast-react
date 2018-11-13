@@ -616,7 +616,6 @@ input:focus {
 
 .order-section > * {
   width: 508px;
-  border: .5px solid gray;
 }
 
 .order-section p {
@@ -668,7 +667,7 @@ ul {
   display: flex;
   align-items: center;
   padding-left: 20px;
-  background: #D2CFCF;
+  background: #eaeaea;
   border-radius: 5px 5px 0 0;
 }
 
@@ -677,7 +676,6 @@ ul {
   justify-content: space-between;
   align-items: flex-start;
   height: 100px;
-  background: #F1F1F1;
   padding: 10px 20px;
   box-sizing: border-box;
 }
@@ -863,7 +861,40 @@ ul {
 
   #orders {
     padding: 0;
-  }  
+  }
+
+  .food-list-container {
+    display: none;
+  }
+
+  .order-section {
+    margin-top: 0;
+  }
+
+  .order-section > * {
+    width: 100%;
+    border: none;
+    height: auto;
+    box-shadow: none;
+  }
+
+  .orders {
+    height: auto;
+    overflow-y: visible;
+  }
+
+  .order {
+    width: 95%;
+  }
+
+  .order > * {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .orders-container-header {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 500px) {

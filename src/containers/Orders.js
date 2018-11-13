@@ -69,13 +69,13 @@ class Orders extends Component {
     const { filter } = this.state;
     return (
       <div className="order-section">
-        <div className="orders-container">
+        <div className="raised orders-container">
           <OrdersHeader filter={filter} onSelectChange={this.onSelectChange}/>
           <ul className="orders">
             {this.renderOrders()}
           </ul>
         </div>
-        <div className="food-list-container">
+        <div className="raised food-list-container">
           <ul className="food-list">
             <li className="food-card">
               <div className="img-thumbnail">
