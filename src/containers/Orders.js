@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { fetchUserOrders } from '../store/actions/orders';
 import OrdersHeader from '../components/OrdersHeader';
 import OrderCard from '../components/OrderCard';
+import FoodListContainer from '../components/FoodListContainer';
 
 class Orders extends Component {
   constructor(props) {
@@ -46,31 +47,7 @@ class Orders extends Component {
             {this.renderOrders()}
           </ul>
         </div>
-        <div className="raised food-list-container">
-          <ul className="food-list">
-            <li className="food-card">
-              <div className="img-thumbnail">
-                <img alt="Chicken Salad" src="https://www.ndtv.com/cooks/images/chicken%20cheese%20salad-620.jpg?downsize=650:400&output-quality=70&output-format=webp" />
-              </div>
-              <div className="food-details">
-                <p>
-                  <span className="semi-bold">Chicken & Cheese Salad</span>
-                </p>
-                <p>
-                  <span className="bold">{"\u20A6"}2,500</span>
-                </p>
-                <p>
-                  <span className="semi-bold">Quantity: </span>
-                  <span>1</span>
-                </p>
-                <p>
-                  <span className="semi-bold">Status: </span>
-                  <span>Delivered</span>
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+        <FoodListContainer />
       </div>
     )
   }
