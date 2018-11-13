@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchUserOrders } from '../store/actions/orders';
+import OrdersHeader from '../components/OrdersHeader';
 
 class Orders extends Component {
   constructor(props) {
@@ -69,21 +70,7 @@ class Orders extends Component {
     return (
       <div className="order-section">
         <div className="orders-container">
-          <div className="raised orders-container-header">
-            <p>
-              <span className="bold">Filter by status</span>
-              <select name="filter" id="filter"
-                onChange={this.onSelectChange}
-                value={filter}
-              >
-                <option value="all">All</option>
-                <option value="new">New</option>
-                <option value="processing">Processing</option>
-                <option value="cancelled">Cancelled</option>
-                <option value="complete">Complete</option>
-              </select>
-            </p>
-          </div>
+          <OrdersHeader filter={filter} onSelectChange={this.onSelectChange}/>
           <ul className="orders">
             {this.renderOrders()}
           </ul>
