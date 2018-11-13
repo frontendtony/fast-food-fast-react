@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { fetchUserOrders } from '../store/actions/orders';
 import OrdersHeader from '../components/OrdersHeader';
+import OrderCard from '../components/OrderCard';
 
 class Orders extends Component {
   constructor(props) {
@@ -29,38 +30,8 @@ class Orders extends Component {
   renderOrders() {
     const { orders } = this.props;
     return _.map(orders, (order) => {
-      const { id, amount, created_on, address } = order;
-      const createdDate = new Date(created_on).toLocaleDateString('en-GB');
-      // const updatedDate = new Date(updated_on).toLocaleDateString('en-GB');
       return(
-        <li className="raised order" key={id}>
-          <div className="order-header">
-            <p>
-              <span className="bold">Order date: </span>
-              <span>{createdDate}</span>
-            </p>
-          </div>
-          <div className="order-body">
-            <div className="order-details">
-              <p>
-                <span className="semi-bold">Amount: </span>
-                <span>{"\u20A6"}{amount}</span>
-              </p>
-              <p>
-                <span className="semi-bold">Order number: </span>
-                <span>{id}</span>
-              </p>
-              <p>
-                <span className="semi-bold">Payment method: </span>
-                <span>Pay on delivery</span>
-              </p>
-            </div>
-            <div className="order-address">
-              <p><span className="semi-bold">Delivery address:</span></p>
-              <p>{address}</p>
-            </div>
-          </div>
-        </li>
+        <OrderCard order={order} key={order.id} />
       );
     })
   }
