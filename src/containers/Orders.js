@@ -1,52 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { fetchUserOrders } from '../store/actions/orders';
-import OrdersHeader from '../components/OrdersHeader';
-import OrderCard from '../components/OrderCard';
 import FoodListContainer from '../components/FoodListContainer';
+import OrdersContainer from '../components/OrdersContainer';
 
 class Orders extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      filter: 'new'
+      selectedOrder: {}
     }
-
-    this.onSelectChange = this.onSelectChange.bind(this);
-    this.renderOrders = this.renderOrders.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchUserOrders();
   }
 
-  onSelectChange(e) {
-    this.setState({
-      filter: e.target.value
-    })
-  }
-
-  renderOrders() {
-    const { orders } = this.props;
-    return _.map(orders, (order) => {
-      return(
-        <OrderCard order={order} key={order.id} />
-      );
-    })
-  }
-
   render() {
-    const { filter } = this.state;
+    const { orders } = this.props;
     return (
       <div className="order-section">
-        <div className="raised orders-container">
-          <OrdersHeader filter={filter} onSelectChange={this.onSelectChange}/>
-          <ul className="orders">
-            {this.renderOrders()}
-          </ul>
-        </div>
+        <OrdersContainer orders={orders} />
         <FoodListContainer />
       </div>
     )
