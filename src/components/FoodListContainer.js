@@ -4,7 +4,15 @@ import FoodCard from '../components/FoodCard';
 
 class FoodListContainer extends Component {
   renderFoodCard() {
-    const { selectedOrder: { foodList, order_status } } = this.props;
+    const { selectedOrder } = this.props;
+    if (!selectedOrder) {
+      return (
+        <p className="food-list-placeholder">
+          Select an order to view the food details
+        </p>
+      )
+    }
+    const {  foodList, order_status } = selectedOrder;
     return _.map(foodList, (food) => {
       return(
       <FoodCard food={food} key={food.id} status={order_status} />
