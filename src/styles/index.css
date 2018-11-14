@@ -629,6 +629,7 @@ ul {
 .food-list-container {
   margin-top: 56px;
   border-left: none;
+  height: calc(770px - 56px);
 }
 
 .orders-container {
@@ -686,6 +687,8 @@ ul {
 
 .food-list {
   margin-top: 30px;
+  height: 93%;
+  overflow-y: scroll;
 }
 
 .food-list-placeholder {
