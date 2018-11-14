@@ -1,10 +1,11 @@
 import React from 'react';
 
 const Order = (props) => {
-  const { id, amount, address, created_on } = props.order;
+  const { setSelectedOrder, order } = props;
+  const { id, amount, address, created_on } = order;
   const createdDate = new Date(created_on).toLocaleDateString('en-GB');
   return (
-    <li className="raised order" key={id}>
+    <li className="raised order" key={id} onClick={() => setSelectedOrder(order)}>
       <div className="order-header">
         <p>
           <span className="bold">Order date: </span>

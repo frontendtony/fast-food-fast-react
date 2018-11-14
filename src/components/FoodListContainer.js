@@ -1,33 +1,25 @@
-import React from 'react';
+import React, { Component } from 'react';
+import _ from 'lodash';
+import FoodCard from '../components/FoodCard';
 
-const FoodListContainer = (props) => {
-  return (
-    <div className="raised food-list-container">
-      <ul className="food-list">
-        <li className="food-card">
-          <div className="img-thumbnail">
-            <img alt="Chicken Salad" src="https://www.ndtv.com/cooks/images/chicken%20cheese%20salad-620.jpg?downsize=650:400&output-quality=70&output-format=webp" />
-          </div>
-          <div className="food-details">
-            <p>
-              <span className="semi-bold">Chicken & Cheese Salad</span>
-            </p>
-            <p>
-              <span className="bold">{"\u20A6"}2,500</span>
-            </p>
-            <p>
-              <span className="semi-bold">Quantity: </span>
-              <span>1</span>
-            </p>
-            <p>
-              <span className="semi-bold">Status: </span>
-              <span>Delivered</span>
-            </p>
-          </div>
-        </li>
-      </ul>
-    </div>
-  );
+class FoodListContainer extends Component {
+  renderFoodCard() {
+    const { selectedOrder: { foodList, order_status } } = this.props;
+    return _.map(foodList, (food) => {
+      return(
+      <FoodCard food={food} key={food.id} status={order_status} />
+      );
+    })
+  }
+  render() {
+    return (
+      <div className="raised food-list-container">
+        <ul className="food-list">
+          {this.renderFoodCard()}
+        </ul>
+      </div>
+    );
+  }
 };
 
 export default FoodListContainer;

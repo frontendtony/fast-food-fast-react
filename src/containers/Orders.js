@@ -9,20 +9,29 @@ class Orders extends Component {
     super(props);
 
     this.state = {
-      selectedOrder: {}
+      selectedOrder: ''
     }
+
+    this.setSelectedOrder = this.setSelectedOrder.bind(this);
   }
 
   componentWillMount() {
     this.props.fetchUserOrders();
   }
 
+  setSelectedOrder(order) {
+    this.setState({
+      selectedOrder: order
+    })
+  }
+
   render() {
     const { orders } = this.props;
+    const { selectedOrder } = this.state;
     return (
       <div className="order-section">
-        <OrdersContainer orders={orders} />
-        <FoodListContainer />
+        <OrdersContainer orders={orders} setSelectedOrder={this.setSelectedOrder} />
+        <FoodListContainer selectedOrder={selectedOrder} />
       </div>
     )
   }

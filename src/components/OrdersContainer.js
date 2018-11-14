@@ -22,10 +22,10 @@ class OrdersContainer extends Component {
   }
 
   renderOrders() {
-    const { orders } = this.props;
+    const { orders, setSelectedOrder } = this.props;
     return _.map(orders, (order) => {
       return(
-        <OrderCard order={order} key={order.id} />
+        <OrderCard order={order} key={order.id} setSelectedOrder={setSelectedOrder} />
       );
     })
   }
