@@ -12,7 +12,7 @@ class FoodListContainer extends Component {
         </p>
       )
     }
-    const {  foodList, order_status } = selectedOrder;
+    const { foodList, order_status } = selectedOrder;
     return _.map(foodList, (food) => {
       return(
       <FoodCard food={food} key={food.id} status={order_status} />
@@ -20,8 +20,17 @@ class FoodListContainer extends Component {
     })
   }
   render() {
+    const { modalClass } = this.props;
+    const { selectedOrder, removeModal } = this.props;
     return (
-      <div className="raised food-list-container">
+      <div className={`raised food-list-container ${modalClass}`}>
+        { selectedOrder 
+          ? <div className="food-list-close-button" onClick={removeModal}>
+              <span>close  </span> 
+              <i className="fa fa-times"></i>
+            </div>
+          : null
+        }
         <ul className="food-list">
           {this.renderFoodCard()}
         </ul>

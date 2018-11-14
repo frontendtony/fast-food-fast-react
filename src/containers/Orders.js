@@ -9,10 +9,12 @@ class Orders extends Component {
     super(props);
 
     this.state = {
-      selectedOrder: ''
+      selectedOrder: '',
+      modalClass: ''
     }
 
     this.setSelectedOrder = this.setSelectedOrder.bind(this);
+    this.removeModal = this.removeModal.bind(this);
   }
 
   componentWillMount() {
@@ -21,17 +23,31 @@ class Orders extends Component {
 
   setSelectedOrder(order) {
     this.setState({
-      selectedOrder: order
+      selectedOrder: order,
+      modalClass: 'food-list-modal'
+    })
+  }
+
+  removeModal() {
+    this.setState({
+      modalClass: ''
     })
   }
 
   render() {
     const { orders } = this.props;
-    const { selectedOrder } = this.state;
+    const { selectedOrder, modalClass } = this.state;
     return (
       <div className="order-section">
-        <OrdersContainer orders={orders} setSelectedOrder={this.setSelectedOrder} />
-        <FoodListContainer selectedOrder={selectedOrder} />
+        <OrdersContainer
+          orders={orders}
+          setSelectedOrder={this.setSelectedOrder}
+        />
+        <FoodListContainer 
+          selectedOrder={selectedOrder}
+          modalClass={modalClass}
+          removeModal={this.removeModal}
+        />
       </div>
     )
   }
