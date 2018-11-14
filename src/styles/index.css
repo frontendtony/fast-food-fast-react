@@ -697,6 +697,10 @@ ul {
   border: 1px solid gray
 }
 
+.food-card:not(:last-child) {
+  border-bottom: none;
+}
+
 .food-card > * {
   height: 100px;
   margin-left: 15px;
